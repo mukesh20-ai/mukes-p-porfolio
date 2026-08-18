@@ -2,7 +2,9 @@ node_modules
 .output
 .nitro
 .wrangler
+.vercel
 dist
 mingit_tool
 mingit.zip
 *.log
+
