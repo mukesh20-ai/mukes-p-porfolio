@@ -7,7 +7,6 @@ import { ArrowDown, Sparkles, Send } from "lucide-react";
 const roles = ["M.Tech Data Science", "Machine Learning & AI", "Computer Vision & Web"];
 
 export function Hero() {
-  add
   return (
     <section id="top">
       <Frame>
