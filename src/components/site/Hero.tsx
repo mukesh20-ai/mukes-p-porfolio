@@ -7,6 +7,7 @@ import { ArrowDown, Sparkles, Send } from "lucide-react";
 const roles = ["M.Tech Data Science", "Machine Learning & AI", "Computer Vision & Web"];
 
 export function Hero() {
+  add
   return (
     <section id="top">
       <Frame>
@@ -83,9 +84,8 @@ export function Hero() {
               <motion.div
                 key={r}
                 whileHover={{ scale: 1.02, color: "var(--color-primary)" }}
-                className={`py-5 text-center text-[15px] font-medium text-foreground/85 transition-colors ${
-                  i > 0 ? "max-sm:dot-t sm:dot-l" : ""
-                }`}
+                className={`py-5 text-center text-[15px] font-medium text-foreground/85 transition-colors ${i > 0 ? "max-sm:dot-t sm:dot-l" : ""
+                  }`}
               >
                 {r}
               </motion.div>
