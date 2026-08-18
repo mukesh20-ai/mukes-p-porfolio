@@ -1,0 +1,195 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * Design system — replicating the "Myfolio" editorial grid aesthetic.
+ * Headings: Bricolage Grotesque. Body: Satoshi.
+ * All colors in oklch. Never hardcode colors in components.
+ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-rail: var(--rail);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-glow-a: var(--glow-a);
+  --color-glow-b: var(--glow-b);
+  --font-display: "Bricolage Grotesque", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Satoshi", ui-sans-serif, system-ui, sans-serif;
+}
+
+:root {
+  --radius: 0.25rem;
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.26 0.014 268);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.26 0.014 268);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.26 0.014 268);
+  --primary: oklch(0.26 0.014 268);
+  --primary-foreground: oklch(0.99 0 0);
+  --secondary: oklch(0.972 0.003 268);
+  --secondary-foreground: oklch(0.26 0.014 268);
+  --muted: oklch(0.975 0.002 268);
+  --muted-foreground: oklch(0.55 0.012 268);
+  --accent: oklch(0.965 0.003 268);
+  --accent-foreground: oklch(0.26 0.014 268);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.99 0 0);
+  --border: oklch(0.906 0.005 268);
+  --rail: oklch(0.93 0.004 268);
+  --input: oklch(0.906 0.005 268);
+  --ring: oklch(0.7 0.01 268);
+  --glow-a: oklch(0.9 0.13 340);
+  --glow-b: oklch(0.93 0.18 128);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    letter-spacing: -0.015em;
+  }
+}
+
+/* Dotted separator used between every band of the layout */
+@utility dot-t {
+  border-top: 1px dashed var(--rail);
+}
+@utility dot-b {
+  border-bottom: 1px dashed var(--rail);
+}
+@utility dot-l {
+  border-left: 1px dashed var(--rail);
+}
+@utility dot-r {
+  border-right: 1px dashed var(--rail);
+}
+
+/* Corner brackets used around the decorative bands */
+@utility bracket {
+  position: relative;
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    width: 40px;
+    height: 26px;
+    border-color: var(--foreground);
+    opacity: 0.55;
+  }
+  &::before {
+    top: 0;
+    left: 0;
+    border-top: 1px solid;
+    border-left: 1px solid;
+  }
+  &::after {
+    top: 0;
+    right: 0;
+    border-top: 1px solid;
+    border-right: 1px solid;
+  }
+}
+
+@utility bracket-b {
+  position: relative;
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    width: 40px;
+    height: 26px;
+    border-color: var(--foreground);
+    opacity: 0.55;
+  }
+  &::before {
+    bottom: 0;
+    left: 0;
+    border-bottom: 1px solid;
+    border-left: 1px solid;
+  }
+  &::after {
+    bottom: 0;
+    right: 0;
+    border-bottom: 1px solid;
+    border-right: 1px solid;
+  }
+}
+
+/* Scroll reveal */
+@utility reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition:
+    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+@utility reveal-in {
+  opacity: 1;
+  transform: none;
+}
+
+@keyframes marquee-x {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@utility marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee-x 38s linear infinite;
+}
+
+@utility marquee-track-rev {
+  display: flex;
+  width: max-content;
+  animation: marquee-x 44s linear infinite reverse;
+}
