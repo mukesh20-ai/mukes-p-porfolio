@@ -4,7 +4,6 @@ import { Nav } from "@/components/site/Nav";
 import { Hero } from "@/components/site/Hero";
 import { About } from "@/components/site/About";
 import { SkillsMatrix } from "@/components/site/SkillsMatrix";
-import { UiUxShowcase } from "@/components/site/UiUxShowcase";
 import { Manifesto } from "@/components/site/Manifesto";
 import { Work } from "@/components/site/Work";
 import { Services } from "@/components/site/Services";
@@ -49,8 +48,6 @@ function Index() {
       <About />
       <SectionLabel label="Skills & Tech Stack" />
       <SkillsMatrix />
-      <SectionLabel label="UI/UX & Product Design" />
-      <UiUxShowcase />
       <Manifesto />
       <SectionLabel label="Things I've Made" id="work-label" />
       <Work />
